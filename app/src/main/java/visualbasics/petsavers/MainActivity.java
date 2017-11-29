@@ -11,7 +11,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
-    //TEST
+
     BottomNavigationView bottomNavigationView;
 
     private ViewPager viewPager;
@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         bottomNavigationView = findViewById(R.id.bottom_navigation);
 
+        // handles bottom menubar clicks for changing fragments
         bottomNavigationView.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
                     @Override
@@ -56,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
 
+            // changes the icon on the bottom menubar to the one that is clicked
             @Override
             public void onPageSelected(int position) {
                 if (prevMenuItem != null) {
@@ -74,20 +76,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //Disable ViewPager Swipe
+        // disable ViewPager Swipe
         viewPager.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 return true;
             }
-
-
         });
 
         setupViewPager(viewPager);
+
+        // sets initial tab to home tab on startup
         bottomNavigationView.setSelectedItemId(R.id.navigation_home);
     }
 
+    // adds 3 tab fragments to the adapter. Only happens once
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         searchFragment = new SearchFragment();
