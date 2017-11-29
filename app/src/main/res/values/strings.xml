@@ -1,6 +1,17 @@
 <resources>
     <string name="app_name">PetSavers</string>
+    <string name="title_search">Search</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_profile">Profile</string>
+
+    <!-- Strings for animal labels -->
+    <string name="dogs_label">Dogs</string>
+    <string name="cats_label">Cats</string>
+    <string name="hamsters_label">Hamsters</string>
+    <string name="guineapigs_label">Guinea Pigs</string>
+    <string name="rabbits_label">Rabbits</string>
+    <string name="ferrets_label">Ferrets</string>
+    <string name="reptiles_label">Reptiles</string>
+    <string name="birds_label">Birds</string>
+    <string name="farmanimals_label">Farm Animals</string>
 </resources>
