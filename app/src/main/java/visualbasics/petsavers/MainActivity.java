@@ -11,7 +11,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
-
+    //TEST
     BottomNavigationView bottomNavigationView;
 
     private ViewPager viewPager;
