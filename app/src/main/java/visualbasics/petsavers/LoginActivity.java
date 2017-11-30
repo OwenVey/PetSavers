@@ -287,12 +287,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mEmailView.setAdapter(adapter);
     }
 
-    public void openRegisterActivity(View view) {
-        finish();
-        Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-        startActivity(intent);
-    }
-
     public void forgotPassword(View view) {
 
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -314,11 +308,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 // shows pop us message if email user gave was valid
                 if (valid)
                     Toast.makeText(getApplicationContext(), "An email has been sent to " + email + ".", Toast.LENGTH_LONG).show();
-                else if (email.equals(""))
-                {
+                else if (email.equals("")) {
 
-                }
-                else
+                } else
                     Toast.makeText(getApplicationContext(), "'" + email + "' is not a valid email.", Toast.LENGTH_LONG).show();
             }
         });
@@ -340,6 +332,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         int ADDRESS = 0;
         int IS_PRIMARY = 1;
+    }
+
+    public void openRegisterActivity(View view) {
+        Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+        startActivity(intent);
     }
 
     /**
