@@ -5,23 +5,37 @@ import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 
-@Database(entities = {Dog.class, Cat.class}, version = 1)
+@Database(entities = {Animal.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
 
-    private static AppDatabase INSTANCE;
+    private static volatile AppDatabase INSTANCE = null;
 
-    public abstract DogDao dogDao();
-    public abstract CatDao catDao();
+    public abstract AnimalDao animalDao();
 
-    // creates a database object following the singleton design pattern
-    public static AppDatabase getAppDatabase(Context context) {
+    private static final String DATABASE_NAME = "animals.db";
+
+    synchronized static AppDatabase get(Context context) {
         if (INSTANCE == null) {
-            INSTANCE = Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, "database").build();
+            INSTANCE = create(context, false);
         }
-        return INSTANCE;
+
+        return (INSTANCE);
     }
 
-    public static void destroyInstance() {
+    static AppDatabase create(Context context, boolean memoryOnly) {
+
+        RoomDatabase.Builder<AppDatabase> builder;
+
+        if (memoryOnly) {
+            builder = Room.inMemoryDatabaseBuilder(context.getApplicationContext(), AppDatabase.class);
+        } else {
+            builder = Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, DATABASE_NAME);
+        }
+
+        return (builder.build());
+    }
+
+    public static void destroy() {
         INSTANCE = null;
     }
 }
