@@ -29,6 +29,7 @@
                 android:id="@+id/dog_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:text="@string/dogs_label" />
         </LinearLayout>
 
@@ -49,6 +50,7 @@
                 android:id="@+id/cat_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:text="@string/cats_label" />
         </LinearLayout>
 
@@ -66,9 +68,10 @@
                 app:srcCompat="@drawable/ic_hamster" />
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/hamster_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:drawableTop="@color/colorPrimary"
                 android:text="@string/hamsters_label" />
         </LinearLayout>
@@ -77,6 +80,7 @@
     <TableRow
         android:id="@+id/row_2"
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_weight="1"
         android:gravity="center">
 
@@ -97,6 +101,7 @@
                 android:id="@+id/hedgehog_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:text="@string/hedgehogs_label" />
         </LinearLayout>
 
@@ -117,6 +122,7 @@
                 android:id="@+id/rabbit_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:text="@string/rabbits_label" />
         </LinearLayout>
 
@@ -137,6 +143,7 @@
                 android:id="@+id/fish_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:text="@string/fish_label" />
         </LinearLayout>
     </TableRow>
@@ -164,6 +171,7 @@
                 android:id="@+id/reptile_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:text="@string/reptiles_label" />
         </LinearLayout>
 
@@ -184,6 +192,7 @@
                 android:id="@+id/bird_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:text="@string/birds_label" />
         </LinearLayout>
 
@@ -204,6 +213,7 @@
                 android:id="@+id/farmanimal_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:text="@string/farmanimals_label" />
         </LinearLayout>
     </TableRow>
