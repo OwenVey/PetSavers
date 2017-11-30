@@ -7,12 +7,15 @@ import android.arch.persistence.room.PrimaryKey;
 @Entity(tableName = "dogs")
 public class Dog {
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     private int animalId;
 
     @ColumnInfo(name = "name")
     private String name;
 
+    public Dog(String name) {
+        this.name = name;
+    }
 
     public int getAnimalId() {
         return animalId;

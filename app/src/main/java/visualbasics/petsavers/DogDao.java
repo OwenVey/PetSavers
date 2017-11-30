@@ -13,6 +13,9 @@ public interface DogDao {
     @Query("SELECT * FROM dogs")
     List<Dog> getAll();
 
+    @Query("SELECT * FROM dogs WHERE name LIKE :name LIMIT 1")
+    Dog findByName(String name);
+
     @Insert
     void insertDog(Dog dog);
 
@@ -21,4 +24,8 @@ public interface DogDao {
 
     @Delete
     void delete(Dog dog);
+
+    @Delete
+    void deleteAll(Dog ... dogs);
+
 }

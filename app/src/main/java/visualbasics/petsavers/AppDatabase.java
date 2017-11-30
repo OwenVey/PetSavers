@@ -13,6 +13,7 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract DogDao dogDao();
     public abstract CatDao catDao();
 
+    // creates a database object following the singleton design pattern
     public static AppDatabase getAppDatabase(Context context) {
         if (INSTANCE == null) {
             INSTANCE = Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, "database").build();
