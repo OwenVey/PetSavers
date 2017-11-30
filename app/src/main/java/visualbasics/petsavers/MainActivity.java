@@ -40,12 +40,15 @@ public class MainActivity extends AppCompatActivity {
                         switch (item.getItemId()) {
                             case R.id.navigation_search:
                                 viewPager.setCurrentItem(0, false);
+                                setTitle("Search");
                                 break;
                             case R.id.navigation_home:
                                 viewPager.setCurrentItem(1, false);
+                                setTitle("Home");
                                 break;
                             case R.id.navigation_profile:
                                 viewPager.setCurrentItem(2, false);
+                                setTitle("Profile");
                                 break;
                         }
                         return false;
@@ -103,14 +106,12 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
     }
 
-    public void openLogInPage(View view)
-    {
+    public void openLogInPage(View view) {
         Intent intent = new Intent(MainActivity.this, LoginActivity.class);
         startActivity(intent);
     }
 
-    public void openRegisterPage(View view)
-    {
+    public void openRegisterPage(View view) {
         Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
         startActivity(intent);
     }
