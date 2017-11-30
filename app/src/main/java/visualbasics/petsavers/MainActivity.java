@@ -1,6 +1,7 @@
 package visualbasics.petsavers;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -102,5 +103,16 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
     }
 
+    public void openLogInPage(View view)
+    {
+        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+        startActivity(intent);
+    }
+
+    public void openRegisterPage(View view)
+    {
+        Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
+        startActivity(intent);
+    }
 
 }

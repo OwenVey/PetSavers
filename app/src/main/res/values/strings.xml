@@ -3,6 +3,8 @@
     <string name="title_search">Search</string>
     <string name="title_home">Home</string>
     <string name="title_profile">Profile</string>
+    <string name="title_activity_login">Sign In</string>
+    <string name="title_activity_register">Register</string>
 
     <!-- Strings for animal labels -->
     <string name="dogs_label">Dogs</string>
@@ -15,15 +17,20 @@
     <string name="birds_label">Birds</string>
     <string name="farmanimals_label">Farm Animals</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="name">Name</string>
-    <string name="email">Email</string>
-    <string name="password">Password</string>
-    <string name="verify_password">Verify Password</string>
-    <string name="username">eg., Alex Tilot</string>
-    <string name="user_email">eg., alextilot@gmail.com</string>
-    <string name="user_password">eg., **********</string>
-    <string name="user_new_account">Create New Account</string>
-    <string name="account_creation_title">Create a PetSavers Account</string>
+    <!-- Strings related to login -->
+    <string name="prompt_display_name">Display Name</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="prompt_confirm_password">Confirm Password</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="action_register">Register</string>
+    <string name="not_a_member">Not a member?</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email completions."</string>
+    <string name="reset_password_button">Reset it</string>
+    <string name="forgot_password_label">Forgot your password?</string>
+
 </resources>
