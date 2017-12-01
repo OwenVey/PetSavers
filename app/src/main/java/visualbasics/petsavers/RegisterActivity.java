@@ -1,5 +1,6 @@
 package visualbasics.petsavers;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,8 +15,9 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void openMainActivity(View view) {
+        setResult(Activity.RESULT_OK);
         finish();
-        Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
-        startActivity(intent);
     }
+
+
 }

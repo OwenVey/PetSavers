@@ -1,6 +1,8 @@
 package visualbasics.petsavers;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -16,10 +18,11 @@ public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
 
     private ViewPager viewPager;
+    ViewPagerAdapter adapter;
 
     SearchFragment searchFragment;
     HomeFragment homeFragment;
-    ProfileFragment profileFragment;
+    LoginRegisterFragment loginRegisterFragment;
 
     MenuItem prevMenuItem;
 
@@ -96,24 +99,22 @@ public class MainActivity extends AppCompatActivity {
 
     // adds 3 tab fragments to the adapter. Only happens once
     private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter = new ViewPagerAdapter(getSupportFragmentManager());
         searchFragment = new SearchFragment();
         homeFragment = new HomeFragment();
-        profileFragment = new ProfileFragment();
+        loginRegisterFragment = new LoginRegisterFragment();
         adapter.addFragment(searchFragment);
         adapter.addFragment(homeFragment);
-        adapter.addFragment(profileFragment);
+        adapter.addFragment(loginRegisterFragment);
         viewPager.setAdapter(adapter);
     }
 
-    public void openLogInPage(View view) {
-        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-        startActivity(intent);
+    public void openLoginPage(View view) {
+        loginRegisterFragment.openLoginPage();
     }
 
     public void openRegisterPage(View view) {
-        Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
-        startActivity(intent);
+        loginRegisterFragment.openRegisterPage();
     }
 
 }
