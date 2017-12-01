@@ -12,15 +12,8 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
     private final List<Fragment> fragmentList = new ArrayList<>();
 
-    static final int NUM_ITEMS = 3;
-    private final FragmentManager fragmentManager;
-    private Fragment mFragmentAtPos0;
-
-
-
     public ViewPagerAdapter(FragmentManager manager) {
         super(manager);
-        fragmentManager = manager;
     }
 
     @Override
@@ -45,13 +38,5 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     public int getItemPosition(Object object) {
         return POSITION_NONE;
     }
-
-//    @Override
-//    public int getItemPosition(Object object)
-//    {
-//        if (object instanceof FirstPageFragment && mFragmentAtPos0 instanceof NextFragment)
-//            return POSITION_NONE;
-//        return POSITION_UNCHANGED;
-//    }
 
 }
