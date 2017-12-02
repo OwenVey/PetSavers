@@ -122,4 +122,49 @@ public class MainActivity extends AppCompatActivity {
         searchFragment.clearFilters();
     }
 
+    public void showDogs(View view)
+    {
+        homeFragment.showDogs();
+    }
+
+    public void showCats(View view)
+    {
+        homeFragment.showCats();
+    }
+
+    public void showHamsters(View view)
+    {
+        homeFragment.showHamsters();
+    }
+
+    public void showHedgehogs(View view)
+    {
+        homeFragment.showHedgehogs();
+    }
+
+    public void showRabbits(View view)
+    {
+        homeFragment.showRabbits();
+    }
+
+    public void showFish(View view)
+    {
+        homeFragment.showFish();
+    }
+
+    public void showReptiles(View view)
+    {
+        homeFragment.showReptiles();
+    }
+
+    public void showBirds(View view)
+    {
+        homeFragment.showBirds();
+    }
+
+    public void showFarmAnimals(View view)
+    {
+        homeFragment.showFarmAnimals();
+    }
+
 }
