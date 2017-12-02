@@ -117,4 +117,9 @@ public class MainActivity extends AppCompatActivity {
         loginRegisterFragment.openRegisterPage();
     }
 
+    public void clearFilters(View view)
+    {
+        searchFragment.clearFilters();
+    }
+
 }
