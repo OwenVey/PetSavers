@@ -20,10 +20,16 @@ public interface AnimalDao {
     @Query("SELECT * FROM animals WHERE type LIKE :type")
     List<Animal> findByType(String type);
 
+    @Query("SELECT * FROM animals WHERE id LIKE :id LIMIT 1")
+    Animal findById(int id);
+
     @Insert
     void insert(Animal... animals);
 
     @Delete
     void delete(Animal... animals);
+
+    @Query("DELETE FROM animals")
+    void deleteAll();
 
 }
