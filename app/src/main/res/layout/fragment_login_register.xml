@@ -9,8 +9,7 @@
         android:id="@+id/sign_in_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:background="@color/colorPrimary"
+        android:backgroundTint="@color/colorPrimary"
         android:onClick="openLoginPage"
         android:text="@string/action_sign_in"
         android:textColor="@android:color/white" />
@@ -19,8 +18,9 @@
         android:id="@+id/register_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/sign_in_button"
-        android:background="@color/colorPrimary"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/sign_in_button"
+        android:backgroundTint="@color/colorPrimary"
         android:onClick="openRegisterPage"
         android:text="@string/action_register"
         android:textColor="@android:color/white" />
