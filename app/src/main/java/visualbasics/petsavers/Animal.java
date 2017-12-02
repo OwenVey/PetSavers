@@ -15,14 +15,17 @@ public class Animal {
     public String breed;
     public String age;
     public String gender;
+    public int weight;
+    public String color;
 
-    public Animal(String name, String type, String imageName, String breed, String age, String gender) {
+    public Animal(String name, String type, String imageName, String breed, String age, String gender, int weight, String color) {
         this.name = name;
         this.type = type;
         this.imageName = imageName;
         this.breed = breed;
         this.age = age;
         this.gender = gender;
+        this.weight = weight;
+        this.color = color;
     }
-
 }
