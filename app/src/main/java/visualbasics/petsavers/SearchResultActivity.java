@@ -23,23 +23,22 @@ public class SearchResultActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search_result);
 
         String animalType = getIntent().getStringExtra("animalType");
+        setTitle(animalType + "s");
         new LoadAllAnimalsOfType(this, animalType).execute();
 
     }
 
-    private void setAdapter()
-    {
-        AnimalRecyclerViewAdapter adapter = new AnimalRecyclerViewAdapter(animalList);
-        RecyclerView recyclerView = findViewById(R.id.animalRecyclerView);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.addItemDecoration(new android.support.v7.widget.DividerItemDecoration(SearchResultActivity.this, LinearLayoutManager.VERTICAL));
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(SearchResultActivity.this));
-
-        if (animalList.isEmpty())
-        {
+    private void setAdapter() {
+        if (animalList.isEmpty()) {
             TextView noResults = findViewById(R.id.noResults);
             noResults.setVisibility(View.VISIBLE);
+        } else {
+            AnimalRecyclerViewAdapter adapter = new AnimalRecyclerViewAdapter(animalList);
+            RecyclerView recyclerView = findViewById(R.id.animalRecyclerView);
+            recyclerView.setItemAnimator(new DefaultItemAnimator());
+            recyclerView.addItemDecoration(new android.support.v7.widget.DividerItemDecoration(SearchResultActivity.this, LinearLayoutManager.VERTICAL));
+            recyclerView.setAdapter(adapter);
+            recyclerView.setLayoutManager(new LinearLayoutManager(SearchResultActivity.this));
         }
     }
 
@@ -48,7 +47,7 @@ public class SearchResultActivity extends AppCompatActivity {
         private Context context;
         String animalType;
 
-        public LoadAllAnimalsOfType (Context context, String animalType){
+        public LoadAllAnimalsOfType(Context context, String animalType) {
             this.context = context;
             this.animalType = animalType;
         }
@@ -57,10 +56,10 @@ public class SearchResultActivity extends AppCompatActivity {
         protected List<Animal> doInBackground(Void... params) {
             AnimalDao animalDao = AppDatabase.get(context).animalDao();
             animalDao.deleteAll();
-            Animal animal1 = new Animal("Jerry", "Dog", "dog1", "Samoyed", "3 years", "Male", 10, "Black");
-            Animal animal2 = new Animal("Sadie", "Dog", "dog2", "Black Lab", "2 years", "Female", 15, "White");
-            Animal animal3 = new Animal("Tim", "Dog", "dog3", "Corgi", "3 years", "Male", 23, "Tan");
-            Animal animal4 = new Animal("Tommy", "Cat", "cat1", "Persian", "4 years", "Male", 10, "White");
+            Animal animal1 = new Animal("Max", "Dog", "dog1", "Samoyed", "5 Months", "Male", 10, "Black");
+            Animal animal2 = new Animal("Sadie", "Dog", "dog2", "Golden Retriever", "4 months", "Female", 15, "White");
+            Animal animal3 = new Animal("Cooper", "Dog", "dog3", "Brown Lab", "3 Years", "Male", 23, "Tan");
+            Animal animal4 = new Animal("Smokey", "Cat", "cat1", "Persian", "4 Years", "Male", 9, "White");
             animalDao.insert(animal1, animal2, animal3, animal4);
             return animalDao.findByType(animalType);
         }
