@@ -39,7 +39,7 @@ public class AnimalRecyclerViewAdapter extends RecyclerView.Adapter<AnimalRecycl
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(context, AnimalDetailsActivity.class);
-                    intent.putExtra("animalId", animals.get(getPosition()).id);
+                    intent.putExtra("animalId", animals.get(getAdapterPosition()).id);
                     context.startActivity(intent);
                 }
             });
@@ -47,8 +47,15 @@ public class AnimalRecyclerViewAdapter extends RecyclerView.Adapter<AnimalRecycl
             favoriteImage.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    name.setText(Integer.toString(getPosition()));
-                    favoriteImage.setImageResource(R.drawable.ic_favorite);
+
+                    Animal clickedAnimal = animals.get(getAdapterPosition());
+                    if (!clickedAnimal.favorited) {
+                        favoriteImage.setImageResource(R.drawable.ic_favorite);
+                        clickedAnimal.favorited = true;
+                    } else {
+                        favoriteImage.setImageResource(R.drawable.ic_favorite_border);
+                        clickedAnimal.favorited = false;
+                    }
                 }
             });
         }
@@ -80,14 +87,12 @@ public class AnimalRecyclerViewAdapter extends RecyclerView.Adapter<AnimalRecycl
     }
 
     @Override
-    public int getItemCount()
-    {
+    public int getItemCount() {
         return animals.size();
     }
 
     // converts weight of animal to appropriate size
-    private String weightToSize(int weight)
-    {
+    private String weightToSize(int weight) {
         String size = null;
         if (weight <= 25)
             size = "Small";
