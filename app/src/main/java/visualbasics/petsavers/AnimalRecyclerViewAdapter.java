@@ -38,7 +38,7 @@ public class AnimalRecyclerViewAdapter extends RecyclerView.Adapter<AnimalRecycl
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(context, AnimalDetailsActivity.class);
+                    Intent intent = new Intent(context, AnimalProfileActivity.class);
                     intent.putExtra("animalId", animals.get(getAdapterPosition()).id);
                     context.startActivity(intent);
                 }
