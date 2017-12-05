@@ -33,6 +33,17 @@
     <string name="reset_password_button">Reset it</string>
     <string name="forgot_password_label">Forgot your password?</string>
 
+    <!-- Strings related to sign up -->
+    <string name="account_creation_title">Create a PetSavers Account</string>
+    <string name="name_label">Name</string>
+    <string name="user_name">e.g., Alex Tilot</string>
+    <string name="email_label">Email</string>
+    <string name="user_email">e.g., alextilot@gmail.com</string>
+    <string name="password_label">Password</string>
+    <string name="user_password_first">e.g., *********</string>
+    <string name="verify_password">Verify Password</string>
+    <string name="user_password_second">e.g., *********</string>
+    <string name="user_new_account_button">Create New Account</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
