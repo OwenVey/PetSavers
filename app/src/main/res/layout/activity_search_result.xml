@@ -17,8 +17,7 @@
         android:id="@+id/animalRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="visualbasics.petsavers.SearchResultActivity">
-    </android.support.v7.widget.RecyclerView>
+        tools:context="visualbasics.petsavers.SearchResultActivity"></android.support.v7.widget.RecyclerView>
 
 
 </RelativeLayout>
