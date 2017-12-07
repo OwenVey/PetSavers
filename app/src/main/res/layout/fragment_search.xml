@@ -242,16 +242,17 @@
                 android:padding="16dp">
 
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/button_search"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="3"
                     android:backgroundTint="@color/colorPrimary"
+                    android:onClick="search"
                     android:text="Search"
                     android:textColor="@android:color/white" />
 
                 <Button
-                    android:id="@+id/button"
+                    android:id="@+id/button_clear_filters"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"

@@ -34,7 +34,7 @@ public class AnimalDaoTest {
 
     @Test
     public void insertAnimal() throws Exception {
-        Animal animal = new Animal("Jerry", "Dog", "dog1", "Samoyed", "3 years", "Male", 10, "Black");
+        Animal animal = new Animal("Jerry", "Dog", "dog1", "Samoyed", "Young", "Male", 10, "Black");
         animalDao.insert(animal);
 
         Animal result = animalDao.findByName("Jerry");
@@ -45,8 +45,8 @@ public class AnimalDaoTest {
 
     @Test
     public void insertTwoAnimals() throws Exception {
-        Animal animal1 = new Animal("Jerry", "Dog", "dog1", "Samoyed", "3 years", "Male", 10, "Black");
-        Animal animal2 = new Animal("Sadie", "Dog", "dog2", "Black Lab", "2 years", "Female", 15, "White");
+        Animal animal1 = new Animal("Jerry", "Dog", "dog1", "Samoyed", "Young", "Male", 10, "Black");
+        Animal animal2 = new Animal("Sadie", "Dog", "dog2", "Black Lab", "Puppy", "Female", 15, "White");
         animalDao.insert(animal1);
         animalDao.insert(animal2);
 
@@ -62,9 +62,9 @@ public class AnimalDaoTest {
 
     @Test
     public void insertMultipleAnimals() throws Exception {
-        Animal animal1 = new Animal("Jerry", "Dog", "dog1", "Samoyed", "3 years", "Male", 10, "Black");
-        Animal animal2 = new Animal("Sadie", "Dog", "dog2", "Black Lab", "2 years", "Female", 15, "White");
-        Animal animal3 = new Animal("Tim", "Dog", "dog3", "Corgi", "3 years", "Male", 23, "Tan");
+        Animal animal1 = new Animal("Jerry", "Dog", "dog1", "Samoyed", "Young", "Male", 10, "Black");
+        Animal animal2 = new Animal("Sadie", "Dog", "dog2", "Black Lab", "Young", "Female", 15, "White");
+        Animal animal3 = new Animal("Tim", "Dog", "dog3", "Corgi", "Puppy", "Male", 23, "Tan");
         animalDao.insert(animal1, animal2, animal3);
 
         List<Animal> animals = animalDao.getAll();
@@ -74,7 +74,7 @@ public class AnimalDaoTest {
 
     @Test
     public void deleteAnimal() throws Exception {
-        Animal animal = new Animal("Jerry", "Dog", "dog1", "Samoyed", "3 years", "Male", 10, "Black");
+        Animal animal = new Animal("Jerry", "Dog", "dog1", "Samoyed", "Young", "Male", 10, "Black");
         animalDao.insert(animal);
 
         List<Animal> animals = animalDao.getAll();
@@ -87,9 +87,9 @@ public class AnimalDaoTest {
 
     @Test
     public void deleteAllAnimals() throws Exception {
-        Animal animal1 = new Animal("Jerry", "Dog", "dog1", "Samoyed", "3 years", "Male", 10, "Black");
-        Animal animal2 = new Animal("Sadie", "Dog", "dog2", "Black Lab", "2 years", "Female", 15, "White");
-        Animal animal3 = new Animal("Tim", "Dog", "dog3", "Corgi", "3 years", "Male", 23, "Tan");
+        Animal animal1 = new Animal("Jerry", "Dog", "dog1", "Samoyed", "Young", "Male", 10, "Black");
+        Animal animal2 = new Animal("Sadie", "Dog", "dog2", "Black Lab", "Young", "Female", 15, "White");
+        Animal animal3 = new Animal("Tim", "Dog", "dog3", "Corgi", "Puppy", "Male", 23, "Tan");
         animalDao.insert(animal1, animal2, animal3);
 
         List<Animal> animals = animalDao.getAll();
@@ -102,9 +102,9 @@ public class AnimalDaoTest {
 
     @Test
     public void findByType() throws Exception {
-        Animal animal1 = new Animal("Jerry", "Dog", "dog1", "Samoyed", "3 years", "Male", 10, "Black");
-        Animal animal2 = new Animal("Sadie", "Dog", "dog2", "Black Lab", "2 years", "Female", 15, "White");
-        Animal animal3 = new Animal("Tim", "Cat", "dog3", "Corgi", "3 years", "Male", 23, "Tan");
+        Animal animal1 = new Animal("Jerry", "Dog", "dog1", "Samoyed", "Young", "Male", 10, "Black");
+        Animal animal2 = new Animal("Sadie", "Dog", "dog2", "Black Lab", "Young", "Female", 15, "White");
+        Animal animal3 = new Animal("Tim", "Cat", "dog3", "Corgi", "Puppy", "Male", 23, "Tan");
         animalDao.insert(animal1, animal2, animal3);
 
         List<Animal> dogs = animalDao.findByType("Dog");

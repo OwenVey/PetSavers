@@ -23,6 +23,9 @@ public interface AnimalDao {
     @Query("SELECT * FROM animals WHERE id LIKE :id LIMIT 1")
     Animal findById(int id);
 
+    //@Query("SELECT * FROM animals WHERE type LIKE :animalType AND breed LIKE :breed AND age LIKE :age AND gender LIKE :gender and  AND")
+    //Animal filteredSearch(String animalType, String breed, String age, String gender, String size, String color);
+
     @Insert
     void insert(Animal... animals);
 
