@@ -1,6 +1,7 @@
 package visualbasics.petsavers;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,6 +16,9 @@ import java.util.List;
 
 public class SearchResultActivity extends AppCompatActivity {
 
+    AnimalDao animalDao;
+    Context context = null;
+
     private List<Animal> animalList;
 
     @Override
@@ -22,9 +26,17 @@ public class SearchResultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_result);
 
+        context = this;
+
+        String searchType = getIntent().getStringExtra("searchType");
         String animalType = getIntent().getStringExtra("animalType");
         setTitle(animalType + "s");
-        new LoadAllAnimalsOfType(this, animalType).execute();
+
+        if (searchType.equals("Filtered")) {
+            filteredSearch();
+        } else if (searchType.equals("Category")) {
+            categorySearch();
+        }
 
     }
 
@@ -42,26 +54,70 @@ public class SearchResultActivity extends AppCompatActivity {
         }
     }
 
-    private class LoadAllAnimalsOfType extends AsyncTask<Void, Void, List<Animal>> {
+    private void filteredSearch() {
+        Intent intent = getIntent();
 
-        private Context context;
+        String animalType = intent.getStringExtra("animalType");
+        String breed = intent.getStringExtra("breed");
+        String age = intent.getStringExtra("age");
+        String gender = intent.getStringExtra("gender");
+        int minWeight = intent.getIntExtra("minWeight", 0);
+        int maxWeight = intent.getIntExtra("maxWeight", 0);
+        String color = intent.getStringExtra("color");
+
+        if (animalType.equals("All"))
+            animalType = null;
+        if (breed.equals("All"))
+            breed = null;
+        if (age.equals("All"))
+            age = null;
+        if (gender.equals("All"))
+            gender = null;
+        if (color.equals("All"))
+            color = null;
+
+        new LoadFilteredAnimals(animalType, breed, age, gender, minWeight, maxWeight, color).execute();
+    }
+
+    private void categorySearch() {
+        String animalType = getIntent().getStringExtra("animalType");
+
+        new LoadAllAnimalsOfType(animalType).execute();
+    }
+
+    private class LoadFilteredAnimals extends AsyncTask<Void, Void, List<Animal>> {
+
         String animalType;
+        String breed;
+        String age;
+        String gender;
+        int minWeight;
+        int maxWeight;
+        String color;
 
-        public LoadAllAnimalsOfType(Context context, String animalType) {
-            this.context = context;
+        public LoadFilteredAnimals(String animalType, String breed, String age, String gender, int minWeight, int maxWeight, String color) {
             this.animalType = animalType;
+            this.breed = breed;
+            this.age = age;
+            this.gender = gender;
+            this.minWeight = minWeight;
+            this.maxWeight = maxWeight;
+            this.color = color;
         }
 
         @Override
         protected List<Animal> doInBackground(Void... params) {
-            AnimalDao animalDao = AppDatabase.get(context).animalDao();
+            animalDao = AppDatabase.get(context).animalDao();
+
             animalDao.deleteAll();
-            Animal animal1 = new Animal("Max", "Dog", "dog1", "Samoyed", "5 Months", "Male", 10, "Black");
-            Animal animal2 = new Animal("Sadie", "Dog", "dog2", "Golden Retriever", "4 months", "Female", 15, "White");
-            Animal animal3 = new Animal("Cooper", "Dog", "dog3", "Brown Lab", "3 Years", "Male", 23, "Tan");
+            Animal animal1 = new Animal("Max", "Dog", "dog1", "Samoyed", "Puppy", "Male", 10, "Black");
+            Animal animal2 = new Animal("Sadie", "Dog", "dog2", "Golden Retriever", "Puppy", "Female", 15, "White");
+            Animal animal3 = new Animal("Cooper", "Dog", "dog3", "Brown Lab", "Young", "Male", 23, "Tan");
             Animal animal4 = new Animal("Smokey", "Cat", "cat1", "Persian", "4 Years", "Male", 9, "White");
             animalDao.insert(animal1, animal2, animal3, animal4);
-            return animalDao.findByType(animalType);
+
+
+            return animalDao.filteredSearch(animalType, breed, age, gender, minWeight, maxWeight, color);
         }
 
         @Override
@@ -71,7 +127,35 @@ public class SearchResultActivity extends AppCompatActivity {
         }
     }
 
+    private class LoadAllAnimalsOfType extends AsyncTask<Void, Void, List<Animal>> {
 
+        String animalType;
+
+        public LoadAllAnimalsOfType(String animalType) {
+            this.animalType = animalType;
+        }
+
+        @Override
+        protected List<Animal> doInBackground(Void... params) {
+            animalDao = AppDatabase.get(context).animalDao();
+
+            animalDao.deleteAll();
+            Animal animal1 = new Animal("Max", "Dog", "dog1", "Samoyed", "Puppy", "Male", 10, "Black");
+            Animal animal2 = new Animal("Sadie", "Dog", "dog2", "Golden Retriever", "Puppy", "Female", 15, "White");
+            Animal animal3 = new Animal("Cooper", "Dog", "dog3", "Brown Lab", "Young", "Male", 23, "Tan");
+            Animal animal4 = new Animal("Smokey", "Cat", "cat1", "Persian", "4 Years", "Male", 9, "White");
+            animalDao.insert(animal1, animal2, animal3, animal4);
+
+
+            return animalDao.findByType(animalType);
+        }
+
+        @Override
+        protected void onPostExecute(List<Animal> animals) {
+            animalList = animals;
+            setAdapter();
+        }
+    }
 }
 
 
