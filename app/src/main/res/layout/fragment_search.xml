@@ -67,7 +67,7 @@
                     android:background="@color/dividerLine" />
 
                 <LinearLayout
-                    android:id="@+id/breedFilter"
+                    android:id="@+id/dogBreedFilter"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="16dp"
@@ -101,7 +101,7 @@
                     android:background="@color/dividerLine" />
 
                 <LinearLayout
-                    android:id="@+id/ageFilter"
+                    android:id="@+id/dogAgeFilter"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="16dp"
@@ -134,7 +134,7 @@
                     android:background="@color/dividerLine" />
 
                 <LinearLayout
-                    android:id="@+id/genderFilter"
+                    android:id="@+id/dogGenderFilter"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="16dp"
@@ -167,7 +167,7 @@
                     android:background="@color/dividerLine" />
 
                 <LinearLayout
-                    android:id="@+id/sizeFilter"
+                    android:id="@+id/dogSizeFilter"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="16dp"
@@ -200,7 +200,7 @@
                     android:background="@color/dividerLine" />
 
                 <LinearLayout
-                    android:id="@+id/colorFilter"
+                    android:id="@+id/dogColorFilter"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="16dp"
@@ -235,10 +235,11 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/buttonsHolder"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
                 android:layout_below="@id/filtersHolder"
+                android:orientation="horizontal"
                 android:padding="16dp">
 
                 <Button

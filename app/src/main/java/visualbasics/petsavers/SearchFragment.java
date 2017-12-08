@@ -93,4 +93,8 @@ public class SearchFragment extends Fragment {
         sizeSpinner.setSelection(0);
         colorSpinner.setSelection(0);
     }
+
+    public void adjustFilters() {
+
+    }
 }
