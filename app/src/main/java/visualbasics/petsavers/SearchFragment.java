@@ -120,8 +120,7 @@ public class SearchFragment extends Fragment {
 
         if (animalType.equals("Dog")) {
             dogFilters.setVisibility(View.VISIBLE);
-        }
-        else {
+        } else {
             dogFilters.setVisibility(View.GONE);
         }
     }

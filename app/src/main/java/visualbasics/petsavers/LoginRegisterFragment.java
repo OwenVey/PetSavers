@@ -34,7 +34,7 @@ public class LoginRegisterFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == Activity.RESULT_OK) {
-            MainActivity mainActivity = (MainActivity)getActivity();
+            MainActivity mainActivity = (MainActivity) getActivity();
             ViewPagerAdapter adapter = mainActivity.adapter;
             adapter.removeFragment(mainActivity.loginRegisterFragment);
             adapter.addFragment(new UserProfileFragment());

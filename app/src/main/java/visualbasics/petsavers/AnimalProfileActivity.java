@@ -21,7 +21,7 @@ public class AnimalProfileActivity extends AppCompatActivity {
         private Context context;
         int animalId;
 
-        public FindAnimalById (Context context, int animalId){
+        public FindAnimalById(Context context, int animalId) {
             this.context = context;
             this.animalId = animalId;
         }

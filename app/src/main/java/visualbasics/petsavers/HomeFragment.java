@@ -19,72 +19,63 @@ public class HomeFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
 
-    public void showDogs()
-    {
+    public void showDogs() {
         Intent intent = new Intent(getActivity(), SearchResultActivity.class);
         intent.putExtra("searchType", "Category");
         intent.putExtra("animalType", "Dog");
         startActivity(intent);
     }
 
-    public void showCats()
-    {
+    public void showCats() {
         Intent intent = new Intent(getActivity(), SearchResultActivity.class);
         intent.putExtra("searchType", "Category");
         intent.putExtra("animalType", "Cat");
         startActivity(intent);
     }
 
-    public void showHamsters()
-    {
+    public void showHamsters() {
         Intent intent = new Intent(getActivity(), SearchResultActivity.class);
         intent.putExtra("searchType", "Category");
         intent.putExtra("animalType", "Hamster");
         startActivity(intent);
     }
 
-    public void showHedgehogs()
-    {
+    public void showHedgehogs() {
         Intent intent = new Intent(getActivity(), SearchResultActivity.class);
         intent.putExtra("searchType", "Category");
         intent.putExtra("animalType", "Hedgehog");
         startActivity(intent);
     }
 
-    public void showRabbits()
-    {
+    public void showRabbits() {
         Intent intent = new Intent(getActivity(), SearchResultActivity.class);
         intent.putExtra("searchType", "Category");
         intent.putExtra("animalType", "Rabbit");
         startActivity(intent);
     }
 
-    public void showFish()
-    {
+    public void showFish() {
         Intent intent = new Intent(getActivity(), SearchResultActivity.class);
         intent.putExtra("searchType", "Category");
         intent.putExtra("animalType", "Fish");
         startActivity(intent);
     }
 
-    public void showReptiles()
-    {
+    public void showReptiles() {
         Intent intent = new Intent(getActivity(), SearchResultActivity.class);
         intent.putExtra("searchType", "Category");
         intent.putExtra("animalType", "Reptile");
         startActivity(intent);
     }
 
-    public void showBirds()
-    {
+    public void showBirds() {
         Intent intent = new Intent(getActivity(), SearchResultActivity.class);
         intent.putExtra("searchType", "Category");
         intent.putExtra("animalType", "Bird");
         startActivity(intent);
     }
 
-    public void showFarmAnimals()
-    {
+    public void showFarmAnimals() {
         Intent intent = new Intent(getActivity(), SearchResultActivity.class);
         intent.putExtra("searchType", "Category");
         intent.putExtra("animalType", "FarmAnimal");
