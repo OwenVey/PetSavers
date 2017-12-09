@@ -160,9 +160,4 @@ public class MainActivity extends AppCompatActivity {
     public void clearFilters(View view) {
         searchFragment.clearFilters();
     }
-
-    public void adjustFilters(View view) {
-        searchFragment.adjustFilters();
-    }
-
 }

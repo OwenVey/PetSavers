@@ -6,11 +6,22 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 
 import com.toptoche.searchablespinnerlibrary.SearchableSpinner;
 
 public class SearchFragment extends Fragment {
+
+    SearchableSpinner animalTypeSpinner;
+    SearchableSpinner breedSpinner;
+    SearchableSpinner ageSpinner;
+    SearchableSpinner genderSpinner;
+    SearchableSpinner sizeSpinner;
+    SearchableSpinner colorSpinner;
+
+    boolean animalTypeSpinnerInitalized = false;
 
     public static SearchFragment newInstance() {
         SearchFragment fragment = new SearchFragment();
@@ -20,20 +31,41 @@ public class SearchFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_search, container, false);
+
+        View view = inflater.inflate(R.layout.fragment_search, container, false);
+
+        animalTypeSpinner = view.findViewById(R.id.animal_type_spinner);
+        breedSpinner = view.findViewById(R.id.breed_spinner);
+        ageSpinner = view.findViewById(R.id.age_spinner);
+        genderSpinner = view.findViewById(R.id.gender_spinner);
+        sizeSpinner = view.findViewById(R.id.size_spinner);
+        colorSpinner = view.findViewById(R.id.color_spinner);
+
+        animalTypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                if (animalTypeSpinnerInitalized) {
+                    String animalType = adapterView.getItemAtPosition(i).toString();
+                    adjustFilters(animalType);
+                }
+                animalTypeSpinnerInitalized = true;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        return view;
     }
 
     public void search() {
-        SearchableSpinner animalTypeSpinner = getActivity().findViewById(R.id.animal_type_spinner);
-        SearchableSpinner breedSpinner = getActivity().findViewById(R.id.breed_spinner);
-        SearchableSpinner ageSpinner = getActivity().findViewById(R.id.age_spinner);
-        SearchableSpinner genderSpinner = getActivity().findViewById(R.id.gender_spinner);
-        SearchableSpinner sizeSpinner = getActivity().findViewById(R.id.size_spinner);
-        SearchableSpinner colorSpinner = getActivity().findViewById(R.id.color_spinner);
 
         String animalType = animalTypeSpinner.getSelectedItem().toString();
         String breed = breedSpinner.getSelectedItem().toString();
@@ -79,13 +111,6 @@ public class SearchFragment extends Fragment {
     }
 
     public void clearFilters() {
-        SearchableSpinner animalTypeSpinner = getActivity().findViewById(R.id.animal_type_spinner);
-        SearchableSpinner breedSpinner = getActivity().findViewById(R.id.breed_spinner);
-        SearchableSpinner ageSpinner = getActivity().findViewById(R.id.age_spinner);
-        SearchableSpinner genderSpinner = getActivity().findViewById(R.id.gender_spinner);
-        SearchableSpinner sizeSpinner = getActivity().findViewById(R.id.size_spinner);
-        SearchableSpinner colorSpinner = getActivity().findViewById(R.id.color_spinner);
-
         animalTypeSpinner.setSelection(0);
         breedSpinner.setSelection(0);
         ageSpinner.setSelection(0);
@@ -94,7 +119,15 @@ public class SearchFragment extends Fragment {
         colorSpinner.setSelection(0);
     }
 
-    public void adjustFilters() {
+    public void adjustFilters(String animalType) {
 
+        LinearLayout dogFilters = getView().findViewById(R.id.dogFilters);
+
+        if (animalType.equals("Dog")) {
+            dogFilters.setVisibility(View.VISIBLE);
+        }
+        else {
+            dogFilters.setVisibility(View.GONE);
+        }
     }
 }
