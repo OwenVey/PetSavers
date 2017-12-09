@@ -10,11 +10,6 @@ import android.view.ViewGroup;
 
 public class LoginRegisterFragment extends Fragment {
 
-    public static LoginRegisterFragment newInstance() {
-        LoginRegisterFragment fragment = new LoginRegisterFragment();
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +37,7 @@ public class LoginRegisterFragment extends Fragment {
             MainActivity mainActivity = (MainActivity)getActivity();
             ViewPagerAdapter adapter = mainActivity.adapter;
             adapter.removeFragment(mainActivity.loginRegisterFragment);
-            adapter.addFragment(UserProfileFragment.newInstance());
+            adapter.addFragment(new UserProfileFragment());
             adapter.notifyDataSetChanged();
         }
     }

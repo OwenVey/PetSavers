@@ -23,11 +23,6 @@ public class SearchFragment extends Fragment {
 
     boolean animalTypeSpinnerInitalized = false;
 
-    public static SearchFragment newInstance() {
-        SearchFragment fragment = new SearchFragment();
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
