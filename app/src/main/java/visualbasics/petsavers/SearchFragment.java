@@ -95,6 +95,7 @@ public class SearchFragment extends Fragment {
 
         Intent intent = new Intent(getActivity(), SearchResultActivity.class);
         intent.putExtra("searchType", "Filtered");
+        intent.putExtra("title", "Search Results");
         intent.putExtra("animalType", animalType);
         intent.putExtra("breed", breed);
         intent.putExtra("age", age);

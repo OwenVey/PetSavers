@@ -21,6 +21,7 @@ public class HomeFragment extends Fragment {
 
     public void showDogs() {
         Intent intent = new Intent(getActivity(), SearchResultActivity.class);
+        intent.putExtra("title", "Dogs");
         intent.putExtra("searchType", "Category");
         intent.putExtra("animalType", "Dog");
         startActivity(intent);
@@ -28,6 +29,7 @@ public class HomeFragment extends Fragment {
 
     public void showCats() {
         Intent intent = new Intent(getActivity(), SearchResultActivity.class);
+        intent.putExtra("title", "Cats");
         intent.putExtra("searchType", "Category");
         intent.putExtra("animalType", "Cat");
         startActivity(intent);
@@ -35,6 +37,7 @@ public class HomeFragment extends Fragment {
 
     public void showHamsters() {
         Intent intent = new Intent(getActivity(), SearchResultActivity.class);
+        intent.putExtra("title", "Hamsters");
         intent.putExtra("searchType", "Category");
         intent.putExtra("animalType", "Hamster");
         startActivity(intent);
@@ -42,6 +45,7 @@ public class HomeFragment extends Fragment {
 
     public void showHedgehogs() {
         Intent intent = new Intent(getActivity(), SearchResultActivity.class);
+        intent.putExtra("title", "Hedgehogs");
         intent.putExtra("searchType", "Category");
         intent.putExtra("animalType", "Hedgehog");
         startActivity(intent);
@@ -49,6 +53,7 @@ public class HomeFragment extends Fragment {
 
     public void showRabbits() {
         Intent intent = new Intent(getActivity(), SearchResultActivity.class);
+        intent.putExtra("title", "Rabbits");
         intent.putExtra("searchType", "Category");
         intent.putExtra("animalType", "Rabbit");
         startActivity(intent);
@@ -56,6 +61,7 @@ public class HomeFragment extends Fragment {
 
     public void showFish() {
         Intent intent = new Intent(getActivity(), SearchResultActivity.class);
+        intent.putExtra("title", "Fish");
         intent.putExtra("searchType", "Category");
         intent.putExtra("animalType", "Fish");
         startActivity(intent);
@@ -63,6 +69,7 @@ public class HomeFragment extends Fragment {
 
     public void showReptiles() {
         Intent intent = new Intent(getActivity(), SearchResultActivity.class);
+        intent.putExtra("title", "Reptiles");
         intent.putExtra("searchType", "Category");
         intent.putExtra("animalType", "Reptile");
         startActivity(intent);
@@ -70,6 +77,7 @@ public class HomeFragment extends Fragment {
 
     public void showBirds() {
         Intent intent = new Intent(getActivity(), SearchResultActivity.class);
+        intent.putExtra("title", "Birds");
         intent.putExtra("searchType", "Category");
         intent.putExtra("animalType", "Bird");
         startActivity(intent);
@@ -77,6 +85,7 @@ public class HomeFragment extends Fragment {
 
     public void showFarmAnimals() {
         Intent intent = new Intent(getActivity(), SearchResultActivity.class);
+        intent.putExtra("title", "Farm Animals");
         intent.putExtra("searchType", "Category");
         intent.putExtra("animalType", "FarmAnimal");
         startActivity(intent);

@@ -30,8 +30,8 @@ public class SearchResultActivity extends AppCompatActivity {
         context = this;
 
         String searchType = getIntent().getStringExtra("searchType");
-        String animalType = getIntent().getStringExtra("animalType");
-        setTitle(animalType + "s");
+        String title = getIntent().getStringExtra("title");
+        setTitle(title);
 
         if (searchType.equals("Filtered")) {
             filteredSearch();
