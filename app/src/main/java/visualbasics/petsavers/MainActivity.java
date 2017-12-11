@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     SearchFragment searchFragment;
     HomeFragment homeFragment;
     LoginRegisterFragment loginRegisterFragment;
+    UserProfileFragment userProfileFragment;
 
     MenuItem prevMenuItem;
 
@@ -31,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        userProfileFragment = new UserProfileFragment();
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         bottomNavigationView = findViewById(R.id.bottom_navigation);
@@ -159,5 +162,13 @@ public class MainActivity extends AppCompatActivity {
 
     public void clearFilters(View view) {
         searchFragment.clearFilters();
+    }
+
+    public void logOut(View view) {
+        userProfileFragment.logOut();
+    }
+
+    public void viewFavorites(View view) {
+        userProfileFragment.viewFavorties();
     }
 }

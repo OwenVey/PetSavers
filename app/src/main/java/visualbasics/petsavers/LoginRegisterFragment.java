@@ -37,7 +37,7 @@ public class LoginRegisterFragment extends Fragment {
             MainActivity mainActivity = (MainActivity) getActivity();
             ViewPagerAdapter adapter = mainActivity.adapter;
             adapter.removeFragment(mainActivity.loginRegisterFragment);
-            adapter.addFragment(new UserProfileFragment());
+            adapter.addFragment(mainActivity.userProfileFragment);
             adapter.notifyDataSetChanged();
         }
     }
