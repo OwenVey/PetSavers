@@ -34,7 +34,13 @@ public class AnimalProfileActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Animal animal) {
-            setTitle(animal.name);
+            addAnimalDetails(animal);
         }
     }
+
+    private void addAnimalDetails(Animal animal) {
+        setTitle(animal.name);
+    }
+
+
 }
