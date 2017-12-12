@@ -5,6 +5,7 @@ import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.TypeConverter;
+import android.arch.persistence.room.Update;
 
 import java.util.List;
 
@@ -32,6 +33,12 @@ public interface AnimalDao {
             "weight BETWEEN :minWeight AND :maxWeight AND " +
             "color = COALESCE(:color, color)")
     List<Animal> filteredSearch(String animalType, String breed, String age, String gender, int minWeight, int maxWeight, String color);
+
+    @Query("SELECT * FROM animals WHERE favorited IS 1")
+    List<Animal> getFavorites();
+
+    @Update
+    void update(Animal... animals);
 
     @Insert
     void insert(Animal... animals);

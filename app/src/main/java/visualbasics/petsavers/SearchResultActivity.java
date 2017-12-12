@@ -37,8 +37,9 @@ public class SearchResultActivity extends AppCompatActivity {
             filteredSearch();
         } else if (searchType.equals("Category")) {
             categorySearch();
+        } else if (searchType.equals("Favorites")) {
+            showFavorites();
         }
-
     }
 
     private void setAdapter() {
@@ -86,6 +87,10 @@ public class SearchResultActivity extends AppCompatActivity {
         new LoadAllAnimalsOfType(animalType).execute();
     }
 
+    private void showFavorites() {
+        new LoadFavorites().execute();
+    }
+
     private class LoadFilteredAnimals extends AsyncTask<Void, Void, List<Animal>> {
 
         String animalType;
@@ -109,15 +114,6 @@ public class SearchResultActivity extends AppCompatActivity {
         @Override
         protected List<Animal> doInBackground(Void... params) {
             animalDao = AppDatabase.get(context).animalDao();
-
-            animalDao.deleteAll();
-            Animal animal1 = new Animal("Max", "Dog", "dog1", "Samoyed", "Puppy", "Male", 10, "White");
-            Animal animal2 = new Animal("Sadie", "Dog", "dog2", "Golden Retriever", "Puppy", "Female", 15, "Golden");
-            Animal animal3 = new Animal("Cooper", "Dog", "dog3", "Brown Lab", "Young", "Male", 55, "Brown");
-            Animal animal4 = new Animal("Smokey", "Cat", "cat1", "Persian", "4 Years", "Male", 9, "Tan");
-            animalDao.insert(animal1, animal2, animal3, animal4);
-
-
             return animalDao.filteredSearch(animalType, breed, age, gender, minWeight, maxWeight, color);
         }
 
@@ -139,14 +135,6 @@ public class SearchResultActivity extends AppCompatActivity {
         @Override
         protected List<Animal> doInBackground(Void... params) {
             animalDao = AppDatabase.get(context).animalDao();
-
-            animalDao.deleteAll();
-            Animal animal1 = new Animal("Max", "Dog", "dog1", "Samoyed", "Puppy", "Male", 10, "White");
-            Animal animal2 = new Animal("Sadie", "Dog", "dog2", "Golden Retriever", "Puppy", "Female", 15, "Golden");
-            Animal animal3 = new Animal("Cooper", "Dog", "dog3", "Brown Lab", "Young", "Male", 55, "Brown");
-            Animal animal4 = new Animal("Smokey", "Cat", "cat1", "Persian", "4 Years", "Male", 9, "Tan");
-            animalDao.insert(animal1, animal2, animal3, animal4);
-
             return animalDao.findByType(animalType);
         }
 
@@ -157,12 +145,19 @@ public class SearchResultActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if ((keyCode == KeyEvent.KEYCODE_BACK)) {
-            finish();
+    private class LoadFavorites extends AsyncTask<Void, Void, List<Animal>> {
+
+        @Override
+        protected List<Animal> doInBackground(Void... params) {
+            animalDao = AppDatabase.get(context).animalDao();
+            return animalDao.getFavorites();
         }
-        return super.onKeyDown(keyCode, event);
+
+        @Override
+        protected void onPostExecute(List<Animal> animals) {
+            animalList = animals;
+            setAdapter();
+        }
     }
 }
 

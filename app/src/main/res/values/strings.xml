@@ -5,6 +5,7 @@
     <string name="title_profile">Profile</string>
     <string name="title_activity_login">Sign In</string>
     <string name="title_activity_register">Register</string>
+    <string name="title_activity_animal_favorites">Favorites</string>
 
     <!-- Strings for animal labels -->
     <string name="dogs_label">Dogs</string>

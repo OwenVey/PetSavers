@@ -5,7 +5,7 @@ import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 
-@Database(entities = {Animal.class}, version = 1)
+@Database(entities = {Animal.class}, version = 2)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static volatile AppDatabase INSTANCE = null;
@@ -27,9 +27,9 @@ public abstract class AppDatabase extends RoomDatabase {
         RoomDatabase.Builder<AppDatabase> builder;
 
         if (memoryOnly) {
-            builder = Room.inMemoryDatabaseBuilder(context.getApplicationContext(), AppDatabase.class);
+            builder = Room.inMemoryDatabaseBuilder(context.getApplicationContext(), AppDatabase.class).fallbackToDestructiveMigration();
         } else {
-            builder = Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, DATABASE_NAME);
+            builder = Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, DATABASE_NAME).fallbackToDestructiveMigration();
         }
 
         return (builder.build());

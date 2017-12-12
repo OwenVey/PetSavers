@@ -18,11 +18,9 @@ public class Animal {
     public String gender;
     public int weight;
     public String color;
+    public int favorited;
 
-    @Ignore
-    boolean favorited = false;
-
-    public Animal(String name, String type, String imageName, String breed, String age, String gender, int weight, String color) {
+    public Animal(String name, String type, String imageName, String breed, String age, String gender, int weight, String color, int favorited) {
         this.name = name;
         this.type = type;
         this.imageName = imageName;
@@ -31,5 +29,6 @@ public class Animal {
         this.gender = gender;
         this.weight = weight;
         this.color = color;
+        this.favorited = favorited;
     }
 }

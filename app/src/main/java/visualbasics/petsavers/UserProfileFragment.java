@@ -20,7 +20,9 @@ public class UserProfileFragment extends Fragment {
     }
 
     public void viewFavorties() {
-        Intent intent = new Intent(getActivity(), FavoriteAnimalsActivity.class);
+        Intent intent = new Intent(getActivity(), SearchResultActivity.class);
+        intent.putExtra("searchType", "Favorites");
+        intent.putExtra("title", "Favorites");
         startActivity(intent);
     }
 

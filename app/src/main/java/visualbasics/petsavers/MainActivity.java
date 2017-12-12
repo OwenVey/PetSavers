@@ -3,7 +3,9 @@ package visualbasics.petsavers;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -12,6 +14,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        new AddAnimalsToDatabase(this).execute();
 
         userProfileFragment = new UserProfileFragment();
 
@@ -110,6 +116,28 @@ public class MainActivity extends AppCompatActivity {
         adapter.addFragment(homeFragment);
         adapter.addFragment(loginRegisterFragment);
         viewPager.setAdapter(adapter);
+    }
+
+    static private class AddAnimalsToDatabase extends AsyncTask<Void, Void, Void> {
+
+        Context context;
+
+        public AddAnimalsToDatabase(Context context) {
+            this.context = context;
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            AnimalDao animalDao = AppDatabase.get(context).animalDao();
+
+            animalDao.deleteAll();
+            Animal animal1 = new Animal("Max", "Dog", "dog1", "Samoyed", "Puppy", "Male", 10, "White", 0);
+            Animal animal2 = new Animal("Sadie", "Dog", "dog2", "Golden Retriever", "Puppy", "Female", 15, "Golden", 0);
+            Animal animal3 = new Animal("Cooper", "Dog", "dog3", "Brown Lab", "Young", "Male", 55, "Brown", 0);
+            Animal animal4 = new Animal("Smokey", "Cat", "cat1", "Persian", "4 Years", "Male", 9, "Tan", 0);
+            animalDao.insert(animal1, animal2, animal3, animal4);
+            return null;
+        }
     }
 
     public void openLoginPage(View view) {

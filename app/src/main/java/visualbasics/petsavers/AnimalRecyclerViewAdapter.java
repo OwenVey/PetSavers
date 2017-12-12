@@ -2,12 +2,15 @@ package visualbasics.petsavers;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -49,15 +52,51 @@ public class AnimalRecyclerViewAdapter extends RecyclerView.Adapter<AnimalRecycl
                 public void onClick(View view) {
 
                     Animal clickedAnimal = animals.get(getAdapterPosition());
-                    if (!clickedAnimal.favorited) {
+                    if (clickedAnimal.favorited == 0) {
                         favoriteImage.setImageResource(R.drawable.ic_favorite);
-                        clickedAnimal.favorited = true;
+                        Toast.makeText(context, "Added " + clickedAnimal.name + " to favorites", Toast.LENGTH_SHORT).show();
+                        new FavoriteAnimal(clickedAnimal).execute();
                     } else {
                         favoriteImage.setImageResource(R.drawable.ic_favorite_border);
-                        clickedAnimal.favorited = false;
+                        Toast.makeText(context, "Removed " + clickedAnimal.name + " from favorites", Toast.LENGTH_SHORT).show();
+                        new UnfavoriteAnimal(clickedAnimal).execute();
                     }
                 }
             });
+        }
+    }
+
+    private class FavoriteAnimal extends AsyncTask<Void, Void, Void> {
+
+        Animal animal;
+
+        public FavoriteAnimal(Animal animal) {
+            this.animal = animal;
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            AnimalDao animalDao = AppDatabase.get(context).animalDao();
+            animal.favorited = 1;
+            animalDao.update(animal);
+            return null;
+        }
+    }
+
+    private class UnfavoriteAnimal extends AsyncTask<Void, Void, Void> {
+
+        Animal animal;
+
+        public UnfavoriteAnimal(Animal animal) {
+            this.animal = animal;
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            AnimalDao animalDao = AppDatabase.get(context).animalDao();
+            animal.favorited = 0;
+            animalDao.update(animal);
+            return null;
         }
     }
 
@@ -84,6 +123,10 @@ public class AnimalRecyclerViewAdapter extends RecyclerView.Adapter<AnimalRecycl
         holder.gender.setText(animal.gender + " • ");
         holder.age.setText(animal.age + " • ");
         holder.size.setText(weightToSize(animal.weight));
+
+        if (animal.favorited == 1) {
+            holder.favoriteImage.setImageResource(R.drawable.ic_favorite);
+        }
     }
 
     @Override
